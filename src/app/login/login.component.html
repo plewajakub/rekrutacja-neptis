@@ -1,0 +1,38 @@
+<div class="container">
+  <section>
+    <div class="loginFormGroup">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+        <div>
+          <img class="logoImg">
+        </div>
+          <div class="loginTitle">
+            <span>Logowanie</span>
+            <hr>
+          </div>
+          <div class="formInputs">
+            <div class="formInput">
+              <input type="email" required placeholder="Adres e-mail" formControlName="email">
+              <!--        Error wrapper-->
+              <div class="ErrorWrapper" *ngIf="loginForm.controls['email'].touched">
+                <span *ngIf="loginForm.controls['email'].hasError('required')">Pole wymagane</span>
+                <span *ngIf="loginForm.controls['email'].hasError('email')">Niepoprawny format e-mail!</span>
+              </div>
+            </div>
+            <div class="formInput">
+              <input type="password" required placeholder="Hasło" formControlName="password">
+              <!--        Error wrapper-->
+              <div class="ErrorWrapper" *ngIf="loginForm.controls['password'].touched">
+                <span *ngIf="loginForm.controls['password'].hasError('required')">Pole wymagane</span>
+                <span *ngIf="loginForm.controls['password'].hasError('minlength')">Hasło jest zbyt krótkie!</span>
+              </div>
+            </div>
+            <div class="checkboxWrapper">
+              <input type="checkbox" id="checkbox">
+              <label for="checkbox">Zapamiętaj mnie</label>
+            </div>
+            <button class="submitButton" type="submit">Zaloguj się</button>
+          </div>
+      </form>
+    </div>
+  </section>
+</div>
